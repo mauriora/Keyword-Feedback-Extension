@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/core-build/serve.schema.json",
+  "port": 4321,
+  "https": true,
+  "serveConfigurations": {
+    "default": {
+      "pageUrl": "https://denniskuhn.sharepoint.com/sites/CTest/SitePages/Home.aspx",
+      "customActions": {
+        "be7da3c4-4e33-c6e3-5bd6-0783ad8b5989": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "listName": "Feedback",
+            "siteUrl": "/sites/CTest"
+          }
+        }
+      }
+    },
+    "Mauri-Ora-Keyword-Feedback-Extension": {
+      "pageUrl": "https://denniskuhn.sharepoint.com/sites/CTest/SitePages/Home.aspx",
+      "customActions": {
+        "be7da3c4-4e33-c6e3-5bd6-0783ad8b5989": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "listName": "Feedback",
+            "siteUrl": "/sites/CTest"
+          }
+        }
+      }
+    }
+  }
+}

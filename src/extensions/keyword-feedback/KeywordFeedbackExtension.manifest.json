@@ -1,0 +1,10 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-extension-manifest.schema.json",
+    "id": "be7da3c4-4e33-c6e3-5bd6-0783ad8b5989",
+    "alias": "Mauri-Ora-Keyword-Feedback-Extension",
+    "componentType": "Extension",
+    "extensionType": "ApplicationCustomizer",
+    "version": "*",
+    "manifestVersion": 2,
+    "requiresCustomScript": false
+}
