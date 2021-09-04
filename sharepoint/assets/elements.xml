@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <CustomAction
+        Title="Mauri-Ora-Keyword-Feedback-Extension"
+        Location="ClientSideExtension.ApplicationCustomizer"
+        ClientSideComponentId="be7da3c4-4e33-c6e3-5bd6-0783ad8b5989"
+        ClientSideComponentProperties="{&quot;listName&quot;:&quot;Feedback&quot;, &quot;siteUrl&quot;:&quot;/sites/CTest&quot;}">
+    </CustomAction>
+</Elements>
