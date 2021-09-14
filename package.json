@@ -21,7 +21,7 @@
         "build": "gulp clean --ship && gulp bundle --ship && gulp package-solution --ship",
         "clean": "gulp clean",
         "test": "gulp test",
-        "serve": "gulp serve-deprecated"
+        "serve": "gulp serve-deprecated --config=default"
     },
     "dependencies": {
         "@mauriora/controller-sharepoint-list": "*",
