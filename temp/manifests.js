@@ -1731,7 +1731,7 @@ var MANIFESTS_ARRAY = [
     "alias": "Mauri-Ora-Keyword-Feedback-Extension",
     "componentType": "Extension",
     "extensionType": "ApplicationCustomizer",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "manifestVersion": 2,
     "requiresCustomScript": false,
     "loaderConfig": {
@@ -1742,7 +1742,7 @@ var MANIFESTS_ARRAY = [
       "scriptResources": {
         "announcements.bundle": {
           "type": "path",
-          "path": "announcements.bundle_ae66c3a7a66ed53751b3.js"
+          "path": "announcements.bundle_43e66f9ff6e88ca07410.js"
         },
         "@microsoft/sp-property-pane": {
           "type": "component",

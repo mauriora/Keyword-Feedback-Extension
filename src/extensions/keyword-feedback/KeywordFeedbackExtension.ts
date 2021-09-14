@@ -27,12 +27,8 @@ export default class KeywordFeedbackExtension
     protected async onInit(): Promise<void> {
         console.log(`${this.context.manifest.alias} [${this.context.manifest.id}] version=${this.context.manifest.version} onInit super.onInit...`, { context: this.context, properties: this.properties });
         super.onInit();
-        console.log(`${this.context.manifest.alias} [${this.context.manifest.id}] version=${this.context.manifest.version} onInit await Controller.init...`, { context: this.context, properties: this.properties });
 
         await Controller.init(this.context);
-
-        console.log(`${this.context.manifest.alias} [${this.context.manifest.id}] version=${this.context.manifest.version} onInit`, {propertiesDeconstructed: {...this.properties}, properties: this.properties, context: this.context, contextDeconstructed: {...this.context}});
-
 
         if (!this.properties.siteUrl || !this.properties.listName) {
             const e: Error = new Error('Missing required configuration parameters');
@@ -47,8 +43,8 @@ export default class KeywordFeedbackExtension
             return Promise.reject(error);
         }
 
-        let site = this.context.pageContext.site;
-        let tenantUrl = site.absoluteUrl.replace(site.serverRelativeUrl, "");
+        const site = this.context.pageContext.site;
+        const tenantUrl = site.absoluteUrl.replace(site.serverRelativeUrl, "");
 
         const elem: React.ReactElement = React.createElement(KeywordFeedback, { 
             siteUrl: `${tenantUrl}${this.properties.siteUrl}`, 
@@ -58,7 +54,5 @@ export default class KeywordFeedbackExtension
         ReactDOM.render(elem, header.domElement);
 
         console.log(`${this.context.manifest.alias} [${this.context.manifest.id}] version=${this.context.manifest.version} onInit finished`, {propertiesDeconstructed: {...this.properties}, properties: this.properties, context: this.context, contextDeconstructed: {...this.context}});
-
-        return Promise.resolve<void>();
     }
 }

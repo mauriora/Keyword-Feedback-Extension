@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FunctionComponent, useCallback, useEffect, useState } from 'react';
 import { create as createController, ListItem, SharePointModel } from '@mauriora/controller-sharepoint-list';
 import { Spinner, Stack } from '@fluentui/react';
-import { ErrorBoundary, TaxonmyField, useAsyncError } from '@mauriora/utils-spfx-controls-react';
+import { EmptyGuid, ErrorBoundary, TaxonmyField, useAsyncError, IPickerTerms } from '@mauriora/utils-spfx-controls-react';
 import * as strings from 'KeywordFeedbackStrings';
 import { autorun } from 'mobx';
 
@@ -20,13 +20,10 @@ export const KeywordFeedbackForm: FunctionComponent<KeywordFeedbackProps> = ({ l
 
     const getController = useCallback(
         async () => {
-            console.log(`KeywordFeedback getController`, { model, listId, siteUrl, item });
             if (listId && siteUrl) {
                 try {
                     const newController = await createController(listId, siteUrl);
                     await newController.init();
-
-                    console.log(`KeywordFeedback getController`, { newController, listId, siteUrl, item });
 
                     const newModel = await newController.addModel(ListItem, '');
                     setModel(newModel);
@@ -40,19 +37,22 @@ export const KeywordFeedbackForm: FunctionComponent<KeywordFeedbackProps> = ({ l
     );
 
     const onGetErrorMessage = useCallback(
-        (terms: Array<{ name: string }>) =>
-            strings.TaxonmyFieldError + terms ? terms.map(term => term.name).join() : '',
+        (terms: IPickerTerms) => {
+            if(terms[0].key === EmptyGuid) {
+                // Show error to hit enter for new keywords
+                return strings.TaxonmyFieldError + (terms ? terms.map(term => term.name).join() : '');
+            }
+            return '';
+        },
         []
     );
 
     useEffect(
         () => autorun(
             async () => {
-                console.log(`KeywordFeedbackForm.autorun item.taxKeyword.length=${item?.taxKeyword?.length}`, { item, model });
-                if (item.taxKeyword.length && undefined === item.title) {
+                if (item?.taxKeyword?.length && undefined === item?.title) {
                     item.title = Date().toString() + ' ' + item.taxKeyword[0].label;
                     await model.submit(item);
-                    console.log(`KeywordFeedbackForm.autorun setNew item.taxKeyword.length=${model.newRecord?.taxKeyword?.length}`, { item, model });
                     setItem(model.newRecord);
                 } else {
                     console.log(`KeywordFeedbackForm.autorun skip ${item?.title}`, { item, model });
