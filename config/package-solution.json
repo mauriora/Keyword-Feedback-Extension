@@ -3,7 +3,7 @@
     "solution": {
         "name": "Keyword Feedback Extension solution",
         "id": "b7b6934e-e8fa-e723-408f-5c93558eb3c6",
-        "version": "0.0.2.0",
+        "version": "0.1.2.0",
         "includeClientSideAssets": true,
         "skipFeatureDeployment": true,
         "features": [
@@ -11,7 +11,7 @@
                 "title": "Keyword Feedback Extension",
                 "description": "Shows feeback box using enterprise keywords in the site header with like/rate buttons.",
                 "id": "4a1305d6-a44e-45cf-928b-25621581481f",
-                "version": "0.0.2.0",
+                "version": "0.1.2.0",
                 "assets": {
                     "elementManifests": [
                         "elements.xml",
