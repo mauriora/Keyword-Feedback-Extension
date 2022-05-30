@@ -23,8 +23,6 @@ export const KeywordFeedbackForm: FunctionComponent<KeywordFeedbackProps> = ({ l
             if (listId && siteUrl) {
                 try {
                     const newController = await createController(listId, siteUrl);
-                    await newController.init();
-
                     const newModel = await newController.addModel(ListItem, '');
                     setModel(newModel);
                     setItem(newModel.newRecord);
@@ -38,9 +36,9 @@ export const KeywordFeedbackForm: FunctionComponent<KeywordFeedbackProps> = ({ l
 
     const onGetErrorMessage = useCallback(
         (terms: IPickerTerms) => {
-            if(terms[0].key === EmptyGuid) {
+            if (terms && terms.length && terms[0].key === EmptyGuid) {
                 // Show error to hit enter for new keywords
-                return strings.TaxonmyFieldError + (terms ? terms.map(term => term.name).join() : '');
+                return strings.TaxonmyFieldError + terms.map(term => term.name).join();
             }
             return '';
         },
